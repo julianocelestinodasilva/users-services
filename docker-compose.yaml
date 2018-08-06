@@ -1,0 +1,23 @@
+version: '2'
+services:
+  users-services:
+    build: .
+    volumes:
+      - "./users-services:/src"
+    ports:
+      - "4567:4567"
+    links:
+        - app-db
+
+  app-db:
+     build: ./db
+     expose:
+       - "5432"
+     volumes_from:
+       - app-db-data
+
+  app-db-data:
+     image: cogniteev/echo
+     command: echo 'Data Container for PostgreSQL'
+     volumes:
+       - /var/lib/postgresql/data
