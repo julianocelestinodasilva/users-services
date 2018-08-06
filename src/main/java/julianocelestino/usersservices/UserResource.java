@@ -17,6 +17,7 @@ import java.net.URI;
 @RequestMapping(path="/users")
 public class UserResource {
 
+	@GetMapping
 	public void a() {
 	}
 
