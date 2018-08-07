@@ -1,12 +1,9 @@
 package julianocelestino.usersservices;
 
-import sun.util.calendar.LocalGregorianCalendar;
+import javax.persistence.*;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+@Entity(name = "users")
 public class User {
 
     @Id
@@ -23,7 +20,7 @@ public class User {
     private Boolean isEnabled;
 
     @Column(nullable = false)
-    private LocalGregorianCalendar.Date registerDate;
+    private Date registerDate;
 
     @Column(nullable = false)
     private String name;
@@ -36,6 +33,18 @@ public class User {
 
     @Column(nullable = false)
     private String fone;
+
+    public User(String username, String password, String name, String surname, String email, String fone) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.fone = fone;
+    }
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -69,11 +78,11 @@ public class User {
         isEnabled = enabled;
     }
 
-    public LocalGregorianCalendar.Date getRegisterDate() {
+    public Date getRegisterDate() {
         return registerDate;
     }
 
-    public void setRegisterDate(LocalGregorianCalendar.Date registerDate) {
+    public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
     }
 
