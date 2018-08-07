@@ -18,6 +18,11 @@ public class UserServices {
 	@Autowired
 	private UserRepository repository;
 
+	@GetMapping(params = {"email"})
+	public @ResponseBody Iterable<User> getByEmail(@RequestParam("email") String email) {
+		return repository.findByEmail(email);
+	}
+
 	@GetMapping(params = {"name"})
 	public @ResponseBody Iterable<User> getByName(@RequestParam("name") String name) {
 		return repository.findByName(name);

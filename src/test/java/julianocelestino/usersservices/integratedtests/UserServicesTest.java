@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import io.restassured.response.Response;
 import julianocelestino.usersservices.domain.User;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.expect;
@@ -22,12 +23,21 @@ public class UserServicesTest {
     }
 
     @Test
+    public void should_list_users_by_email() {
+        final String email = "user@teste.com";
+        final User user = new User("User", "password"
+                , "name", "My Sur Name", email, "11 9 67564432");
+        createUser(user);
+        expectUserBy("email",email,user);
+    }
+
+    @Test
     public void should_list_users_by_name() {
         final String name = "Jose";
-        final User user = new User("username", "password"
-                , name, "My Sur Name", "userpost@test.com", "11 9 67564432");
+        final User user = new User("Ze", "password"
+                , name, "My Sur Name", "ze@test.com", "11 9 67564432");
         createUser(user);
-        expectUserBy("name ",name ,user);
+        expectUserBy("name",name ,user);
     }
 
 
@@ -35,9 +45,9 @@ public class UserServicesTest {
     public void should_list_users_by_username() {
         final String username = "ABC_123";
         final User user = new User(username, "password"
-                , "User", "My Sur Name", "userpost@test.com", "11 9 67564432");
+                , "User", "My Sur Name", username + "@test.com", "11 9 67564432");
         createUser(user);
-        expectUserBy("username ",username ,user);
+        expectUserBy("username",username ,user);
     }
 
     private void expectUserBy(String filterName,String filterValue, User user) {
