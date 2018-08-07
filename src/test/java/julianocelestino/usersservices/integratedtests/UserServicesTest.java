@@ -2,7 +2,7 @@ package julianocelestino.usersservices.integratedtests;
 
 import com.google.gson.GsonBuilder;
 import io.restassured.response.Response;
-import julianocelestino.usersservices.User;
+import julianocelestino.usersservices.domain.User;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;

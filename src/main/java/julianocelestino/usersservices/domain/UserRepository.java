@@ -1,4 +1,4 @@
-package julianocelestino.usersservices;
+package julianocelestino.usersservices.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

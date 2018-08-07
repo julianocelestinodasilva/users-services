@@ -1,4 +1,4 @@
-package julianocelestino.usersservices;
+package julianocelestino.usersservices.domain;
 
 import javax.persistence.*;
 import java.util.Date;
