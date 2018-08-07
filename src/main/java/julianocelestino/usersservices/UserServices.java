@@ -35,5 +35,10 @@ public class UserServices {
 		return ResponseEntity.created(location).build();
 	}
 
+	@DeleteMapping
+	public ResponseEntity<?> deleteAll() {
+		repository.deleteAll();
+		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+	}
 
 }
