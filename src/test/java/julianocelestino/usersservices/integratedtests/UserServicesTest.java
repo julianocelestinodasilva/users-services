@@ -22,6 +22,16 @@ public class UserServicesTest {
     }
 
     @Test
+    public void should_list_users_by_name() {
+        final String name = "Jose";
+        final User user = new User("username", "password"
+                , name, "My Sur Name", "userpost@test.com", "11 9 67564432");
+        createUser(user);
+        expectUserBy("name ",name ,user);
+    }
+
+
+    @Test
     public void should_list_users_by_username() {
         final String username = "ABC_123";
         final User user = new User(username, "password"
