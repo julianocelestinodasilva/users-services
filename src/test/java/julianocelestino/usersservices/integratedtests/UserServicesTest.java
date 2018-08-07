@@ -27,6 +27,10 @@ public class UserServicesTest {
         final User user = new User(username, "password"
                 , "User", "My Sur Name", "userpost@test.com", "11 9 67564432");
         createUser(user);
+        expectUserBy("username ",username ,user);
+    }
+
+    private void expectUserBy(String filterName,String filterValue, User user) {
         expect().statusCode(200).
                 body("size()", is(1)).
                 body("get(0).fone", equalTo(user.getFone())).
@@ -35,7 +39,7 @@ public class UserServicesTest {
                 body("get(0).name", equalTo(user.getName())).
                 body("get(0).email", equalTo(user.getEmail())).
                 body("get(0).enabled", equalTo(true)).
-                when().get(URL + "?username="+username);
+                when().get(URL + "?"+filterName+"="+filterValue);
     }
 
     private void createUser(User user) {
