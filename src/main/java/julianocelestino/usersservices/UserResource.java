@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
 
-@Controller
-@RequestMapping(path="/users")
+@RestController
+@RequestMapping("/users")
 public class UserResource {
 
 	@GetMapping
-	public void a() {
+	public ResponseEntity get() {
+		return ResponseEntity.status(HttpStatus.OK).body("Aqui Virao os Usuarios");
 	}
 
 
