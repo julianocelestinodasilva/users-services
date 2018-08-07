@@ -18,11 +18,15 @@ public class UserServices {
 	@Autowired
 	private UserRepository repository;
 
-	@GetMapping
-	public ResponseEntity get() {
-		return ResponseEntity.status(HttpStatus.OK).body("Aqui Virao os Usuarios");
+	@GetMapping(params = {"username"})
+	public @ResponseBody Iterable<User> get(@RequestParam("username") String username) {
+		return repository.findByUsername(username);
 	}
 
+	@GetMapping
+	public @ResponseBody Iterable<User> get() {
+		return repository.findAll();
+	}
 
 	@PostMapping
 	public ResponseEntity<?> post (@RequestBody User user) {
