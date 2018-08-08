@@ -15,11 +15,36 @@ import static org.junit.Assert.assertEquals;
 
 public class UserServicesTest {
 
-    private static final String URL = "http://localhost:8080/users";
+    private static final String URL = "http://172.19.0.2:8080/users";
 
     @Before
     public void clearUsers() {
         given().when().delete (URL).then().statusCode(204);
+    }
+
+    @Test
+    public void should_list_all_users() {
+        final User user1 = new User("User1", "password"
+                , "name", "My Sur Name", "user1@test.com", "11 9 67564432");
+        createUser(user1);
+        final User user2 = new User("User2", "password"
+                , "name", "My Sur Name", "user2@test.com", "11 9 67564432");
+        createUser(user2);
+        expect().statusCode(200).
+                body("size()", is(2)).
+                body("get(0).fone", equalTo(user1.getFone())).
+                body("get(0).password", equalTo(user1.getPassword())).
+                body("get(0).surname", equalTo(user1.getSurname())).
+                body("get(0).name", equalTo(user1.getName())).
+                body("get(0).email", equalTo(user1.getEmail())).
+                body("get(0).enabled", equalTo(true)).
+                body("get(1).fone", equalTo(user2.getFone())).
+                body("get(1).password", equalTo(user2.getPassword())).
+                body("get(1).surname", equalTo(user2.getSurname())).
+                body("get(1).name", equalTo(user2.getName())).
+                body("get(1).email", equalTo(user2.getEmail())).
+                body("get(1).enabled", equalTo(true)).
+                when().get(URL);
     }
 
     @Test
