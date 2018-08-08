@@ -4,7 +4,6 @@ import com.google.gson.GsonBuilder;
 import io.restassured.response.Response;
 import julianocelestino.usersservices.domain.User;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.expect;
@@ -15,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class UserServicesTest {
 
-    private static final String URL = "http://172.19.0.2:8080/users";
+    private static final String URL = "http://172.19.0.2:8080/users"; // (172.19.0.2 - Docker container IP) ;
 
     @Before
     public void clearUsers() {
