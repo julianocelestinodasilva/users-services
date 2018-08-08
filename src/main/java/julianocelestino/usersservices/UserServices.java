@@ -18,21 +18,25 @@ public class UserServices {
 	@Autowired
 	private UserRepository repository;
 
+	@CrossOrigin(origins = "http://localhost:30000")
 	@GetMapping(params = {"email"})
 	public @ResponseBody Iterable<User> getByEmail(@RequestParam("email") String email) {
 		return repository.findByEmail(email);
 	}
 
+	@CrossOrigin(origins = "http://localhost:30000")
 	@GetMapping(params = {"name"})
 	public @ResponseBody Iterable<User> getByName(@RequestParam("name") String name) {
 		return repository.findByName(name);
 	}
 
+	@CrossOrigin(origins = "http://localhost:30000")
 	@GetMapping(params = {"username"})
 	public @ResponseBody Iterable<User> getByUserName(@RequestParam("username") String username) {
 		return repository.findByUsername(username);
 	}
 
+	@CrossOrigin(origins = "http://localhost:30000")
 	@GetMapping
 	public @ResponseBody Iterable<User> get() {
 		return repository.findAll();
