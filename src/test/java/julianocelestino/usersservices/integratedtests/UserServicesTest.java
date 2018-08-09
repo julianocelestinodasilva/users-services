@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class UserServicesTest {
 
-    private static final String URL = "http://172.19.0.2:8080/users"; // (172.19.0.2 - Docker container IP) ;
+    private static final String URL = "http://localhost:8080/users"; // (172.19.0.2 - Docker container IP) ;
 
     @Before
     public void clearUsers() {
