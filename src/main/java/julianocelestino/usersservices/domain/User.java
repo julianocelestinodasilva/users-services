@@ -1,6 +1,7 @@
 package julianocelestino.usersservices.domain;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -45,6 +46,15 @@ public class User {
     }
 
     public User() {
+    }
+
+    public String getEnabledFormated() {
+        return (isEnabled?"SIM":"NÃO");
+    }
+
+    public String getRegisterDateFormated() {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        return format.format(registerDate);
     }
 
     public Long getId() {
