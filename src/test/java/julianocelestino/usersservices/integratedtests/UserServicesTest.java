@@ -22,6 +22,18 @@ public class UserServicesTest {
     }
 
     @Test
+    public void name() {
+        createUser(new User("Ze", "password"
+                , "Jose", "Silva", "ze@test.com", "11 9 67564432"));
+
+        createUser(new User("Jao", "password"
+                , "Joao", "Aparecido", "joao@test.com", "11 9 67564427"));
+
+        createUser(new User("Gugu", "password"
+                , "Augusto", "Liberato", "gugu@gmail.com", "11 9 67554427"));
+    }
+
+    @Test
     public void should_list_all_users() {
         final User user1 = new User("User1", "password"
                 , "name", "My Sur Name", "user1@test.com", "11 9 67564432");
